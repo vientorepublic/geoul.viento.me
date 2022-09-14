@@ -72,4 +72,16 @@ body {
         margin-top: -2.5rem;
     }
 }
+@media (max-width: 991px) {
+	.Figure__number {
+		font-size: 1.5rem;
+	}
+	.Figure__caption {
+		font-size: .5rem;
+	}
+	.Figure__caption__icon {
+		width: 1rem;
+		height: 1rem;
+	}
+}
 </style>
