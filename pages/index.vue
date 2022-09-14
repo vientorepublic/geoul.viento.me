@@ -63,4 +63,13 @@ body {
 	background: rgba(221, 221, 221, 0.5);
 	border-radius: 20px;
 }
+@media (max-width: 991px) {
+    .app {
+        flex-direction: column;
+    }
+
+    .app .column-side {
+        margin-top: -2.5rem;
+    }
+}
 </style>
