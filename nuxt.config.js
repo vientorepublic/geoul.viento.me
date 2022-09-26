@@ -1,6 +1,6 @@
 export default {
     head: {
-        title: 'viento-mirror',
+        title: 'Viento Mirror',
         htmlAttrs: {
             lang: 'ko'
         },
@@ -17,11 +17,19 @@ export default {
         ],
         script: [
             { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js' },
+            { src: 'https://mirror.viento.me/etc/static/js/speedtest.js' },
         ]
+    },
+    publicRuntimeConfig: {
+        BASE_URL: process.env.BASE_URL,
+        DB_PATH: process.env.DB_PATH,
     },
     plugins: [],
     components: true,
-    modules: ["@nuxtjs/axios", "@nuxtjs/i18n"],
+    modules: [
+        "@nuxtjs/axios",
+        "@nuxtjs/i18n",
+    ],
     i18n: {
         locales: [{
                 code: 'ko',
@@ -31,8 +39,18 @@ export default {
                 code: 'en',
                 name: 'English'
             },
+            {
+                code: 'jp',
+                name: '日本語',
+            },
         ],
         defaultLocale: 'ko',
+        detectBrowserLanguage: {
+            useCookie: true,
+            alwaysRedirect: true,
+            cookieKey: 'i18n_redirected',
+            redirectOn: 'root',
+        },
         vueI18n: {
             fallbackLocale: 'ko',
             silentTranslationWarn: process.env.NODE_ENV === 'production',
@@ -68,6 +86,15 @@ export default {
                     twitter: '트위터',
                     email: '이메일',
                     checkout: '확인하기',
+                    speedtest_title: '속도 체크',
+                    speedtest_detail: '30MiB 파일을 내려받는데 걸리는 속도를 테스트합니다.',
+                    speedtest_size: '파일 크기',
+                    speedtest_elapsed: '걸린 시간',
+                    speedtest_avg: '평균 속도',
+                    tryagain: '다시 시도',
+                    start: '시작',
+                    net_usage_detail_1: '하단의 링크를 통해 미러의 네트워크 사용량을 조회하실 수 있습니다.',
+                    net_usage_detail_2: '스패머를 막기 위해 유저이름은 "goodman", 비밀번호는 "i-am-not-a-spammer"로 로그인하셔야 열람이 가능합니다.',
                 },
                 en: {
                     new_ver: 'We are currently using the new version of the mirror main page. If there is a problem, please report it through the inquiry email.',
@@ -99,6 +126,55 @@ export default {
                     twitter: 'Twitter',
                     email: 'E-mail',
                     checkout: 'Check out',
+                    speedtest_title: 'Speed Test',
+                    speedtest_detail: 'Test how much time takes to download a 30MiB file.',
+                    speedtest_size: 'File Size',
+                    speedtest_elapsed: 'Elapsed Time',
+                    speedtest_avg: 'Avg Speed',
+                    tryagain: 'Try again',
+                    start: 'Start',
+                    net_usage_detail_1: 'You can see the network usage of Mirror via the links below.',
+                    net_usage_detail_2: 'To prevent spammers, you should login with username "goodman" and password "i-am-not-a-spammer".',
+                },
+                jp: {
+                    new_ver: '現在ミラーメインページの新バージョンを使用しています。 問題がある場合は、お問い合わせメールでご報告ください。',
+                    summary: 'まとめ',
+                    welcome: 'VientoMirrorへようこそ！',
+                    summary_info: 'VientoMirrorは、オープンソースのソフトウェアミラーリングと複数のファイルとソフトウェアのミラーリングを提供し、HTTP経由でアクセスできます。 システムのオペレーティングシステムはUbuntuGNU/Linuxで、nginxやrsyncなどのフリーソフトウェアが使用されています。',
+                    disclaimer: '免責事項',
+                    disclaimer_info_1: 'VientoMirrorサービスオペレータは、本サービスに対する法的責任を一切負いません。 すべてのサービスは、お客様の責任において使用されます。',
+                    disclaimer_info_2: 'VientoMirrorサービスオペレータは、このサービスによって発生する可能性のある問題について責任を負いません。',
+                    disclaimer_info_3: 'サービス利用記録は自動的に収集され、サービス品質向上および統計分析に活用でき、サービス改善のために利用制限がかかることがある。',
+                    sync_status: '同期状態',
+                    sync_cycle: '同期サイクル',
+                    source: '出典',
+                    last_time: '最後の同期時間',
+                    update: 'アップデート',
+                    unknown: '不明',
+                    success: '成功',
+                    failed: '失敗した',
+                    syncing: '同期化',
+                    goto: 'ストレージに移動',
+                    contact: '連絡先',
+                    package: 'パッケージ',
+                    address: 'サーバーアドレス',
+                    notice: 'お知らせ',
+                    speedcheck: 'ネットワークの使用状況',
+                    net_usage: 'ネットワークの使用状況',
+                    spec: '仕様書',
+                    contect_info: '連絡先',
+                    twitter: 'Twitter',
+                    email: 'E-mail',
+                    checkout: '確認',
+                    speedtest_title: '速度テスト',
+                    speedtest_detail: '30MiBファイルのダウンロードにかかる時間をテストします。',
+                    speedtest_size: 'ファイルサイズ',
+                    speedtest_elapsed: '経過時間',
+                    speedtest_avg: '平均速度',
+                    tryagain: '再試行',
+                    start: 'スタート',
+                    net_usage_detail_1: 'Mirrorのネットワーク使用状況は、次のリンクから確認できます。',
+                    net_usage_detail_2: 'スパム送信者を防止するには、ユーザー名「goodman」とパスワード「i-am-not-a-spammer」でログインする必要があります。',
                 },
             }
         }
@@ -108,5 +184,5 @@ export default {
         color: 'blue',
         height: '3px',
         throttle: 0,
-    }
+    },
 }
