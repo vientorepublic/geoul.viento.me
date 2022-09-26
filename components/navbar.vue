@@ -1,28 +1,23 @@
-<!--<template>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container px-lg-5">
-                <nuxt-link to="/" class="navbar-brand">Viento Mirror</nuxt-link>
-                <a
-  href="#"
-  v-for="locale in availableLocales"
-  :key="locale.code"
-  @click.prevent.stop="$i18n.setLocale(locale.code)">{{ locale.name }}</a>
-            </div>
-        </nav>
-</template>-->
 <template>
-    <nav class="navbar">
-			<div class="logo">
-				<a href="#!">
-					<i class="fa-solid fa-copy"></i>
-					<span class="logo-text">Viento Mirror</span>
-				</a>
-			</div>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="https://mirror.viento.me">
+        <i class="fa-solid fa-copy"></i>
+        <span class="logo-text">Viento Mirror</span>
+      </a>
+    </div>
 
-			<ul class="language-option">
-				<a href="#" v-for="locale in availableLocales" :key="locale.code" @click.prevent.stop="$i18n.setLocale(locale.code)">{{ locale.name }}</a>
-			</ul>
-		</nav>
+    <ul class="language-option">
+      <button
+        class="language-option-btn"
+        v-for="locale in availableLocales"
+        :key="locale.code"
+        @click.prevent.stop="$i18n.setLocale(locale.code)"
+      >
+        {{ locale.name }}
+      </button>
+    </ul>
+  </nav>
 </template>
 
 <script>
@@ -37,33 +32,33 @@ export default {
 
 <style scoped>
 .navbar a {
-	text-decoration: none;
-	color: var(--text-color);
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 .navbar {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-	margin: 1rem 2rem;
+  margin: 1rem 2rem;
 }
 
 .navbar .logo {
-	font-size: 1.7rem;
-	font-weight: 200;
+  font-size: 1.7rem;
+  font-weight: 200;
 }
 
 .navbar .logo-text {
-	margin-left: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .navbar .language-option-btn {
-	font-size: 1rem;
-	font-weight: 500;
-	background: none;
-	color: var(--primary-color);
-	border: none;
-	cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  background: none;
+  color: var(--primary-color);
+  border: none;
+  cursor: pointer;
 }
 </style>
