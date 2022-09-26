@@ -1,13 +1,11 @@
 <template>
     <div class="Packages__figures">
 				<figure class="Figure"><code class="Figure__number">
-
-                        <p v-if="$fetchState.pending">-</p>
-                        <p v-else-if="$fetchState.error">-</p>
-                        <div v-else>
-                            {{ data["active"] }}
-                        </div>
-
+					<p v-if="$fetchState.pending">-</p>
+                    <p v-else-if="$fetchState.error">-</p>
+                    <div v-else>
+                        {{ data["active"] }}
+					</div>
                     </code>
 					<figcaption class="Figure__caption">
 						<svg width="30" height="20" viewBox="0 0 30 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="Figure__caption__icon">
@@ -15,13 +13,11 @@
 						</svg> <span class="Figure__caption__text"> Active </span></figcaption>
 				</figure>
 				<figure class="Figure"><code class="Figure__number">
-
-                        <p v-if="$fetchState.pending">-</p>
-                        <p v-else-if="$fetchState.error">-</p>
-                        <div v-else>
-                            {{ data["syncing"] }}
-                        </div>
-
+					<p v-if="$fetchState.pending">-</p>
+                    <p v-else-if="$fetchState.error">-</p>
+                    <div v-else>
+                        {{ data["syncing"] }}
+					</div>
                     </code>
 					<figcaption class="Figure__caption">
 						<svg width="34" height="30" viewBox="0 0 34 30" fill="none" xmlns="http://www.w3.org/2000/svg" class="Figure__caption__icon">
@@ -29,13 +25,11 @@
 						</svg> <span class="Figure__caption__text"> Syncing </span></figcaption>
 				</figure>
 				<figure class="Figure"><code class="Figure__number">
-
-                        <p v-if="$fetchState.pending">-</p>
-                        <p v-else-if="$fetchState.error">-</p>
-                        <div v-else>
-                            {{ data["failed"] }}
-                        </div>
-
+					<p v-if="$fetchState.pending">-</p>
+                    <p v-else-if="$fetchState.error">-</p>
+                    <div v-else>
+                        {{ data["failed"] }}
+					</div>
                     </code>
 					<figcaption class="Figure__caption">
 						<svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg" class="Figure__caption__icon">
@@ -91,13 +85,16 @@
 
 <script>
 export default {
-    data() {
-        return {
-            data: []
-        };
-    },
-    async fetch() {
-        this.data = await fetch("https://mirror.viento.me/logs/status.json").then(res => res.json());
-    },
+	data() {
+		return {
+			data: []
+		};
+	},
+	async fetch() {
+		this.data = await this.$axios.get(`${this.$config.BASE_URL}${this.$config.DB_PATH}`).then(res =>
+			this.data = res.data
+		)
+	},
+	fetchOnServer: false,
 }
 </script>
