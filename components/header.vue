@@ -13,6 +13,7 @@
 <style scoped>
 .summary h1 {
 	padding-bottom: 0.5rem;
+	font-size: 1.5em;
 }
 .summary h1:first-child {
 	padding-top: 0;
