@@ -115,8 +115,6 @@
 }
 
 .Figure__number {
-  font-family: Iosevka, NanumBarunRoboto, monospace;
-  font-family: var(--code-font);
   color: white;
   font-size: 4.5rem;
   margin: 0;
@@ -125,6 +123,10 @@
 .Figure__caption {
   font-size: 1.5rem;
   text-transform: uppercase;
+}
+
+.Figure__caption__text {
+    vertical-align: middle;
 }
 </style>
 
